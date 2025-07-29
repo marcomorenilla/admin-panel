@@ -14,6 +14,18 @@ export const usersReducer = (state = [], action) => {
                     id: state.reduce((accum)=>accum +1,1)
                 }
             ]
+        case 'del':
+            return state.filter((item)=> action.id != item.id)
+        case 'update':
+            return state.map(user=>{
+                if(user.id == action.user.id){
+                    return {
+                        ...action.user,
+                        password: user.password
+                    }
+                }
+                return user;
+            })
         default:
             return state;
     }

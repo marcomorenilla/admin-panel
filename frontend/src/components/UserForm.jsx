@@ -1,36 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const emptyForm = {
-    username: '',
-    password:'',
-    email: ''
-}
 
-export const UserForm = ({handleAddUsers}) => {
+export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser }) => {
 
-    const [formData, setFormData] = useState(emptyForm);
+    const [formData, setFormData] = useState(emptyFormData);
 
-    const {username, password, email} = formData;
+    useEffect(() => {
+        setFormData({ ...selectedUser })
+    }, [selectedUser])
 
-    const handleChange = ({target}) => {
-        const {name, value} = target;
-        console.log(`${name} - ${value}`)
+    const { username, password, email } = formData;
+
+    const handleChange = ({ target }) => {
+        const { name, value } = target;
         setFormData({
             ...formData,
             [name]: value
         })
-
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(!username || !password || !email){
+        if (!username || (!password && formData.id ===0) || !email) {
             alert('Debes rellenar todos los campos')
-        }else{
+        } else {
             handleAddUsers(formData);
-            setFormData(emptyForm);
+            setFormData(emptyFormData);
         }
-        
+
     }
     return (<>
         <form className="mt-8 mb-2 w-80 mx-auto sm:w-96"
@@ -46,6 +43,7 @@ export const UserForm = ({handleAddUsers}) => {
             </div>
 
             <div className="flex flex-col gap-2 mb-4">
+                {formData.id > 0 || <>
                 <div className="font-semibold">Password:</div>
                 <input className="border border-gray-400 outline-none px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50  rounded"
                     placeholder="Introduce la contraseña..."
@@ -53,6 +51,10 @@ export const UserForm = ({handleAddUsers}) => {
                     name="password"
                     value={password}
                     onChange={handleChange} />
+                </>
+                
+                }
+
             </div>
 
             <div className="flex flex-col gap-2 mb-4">
@@ -67,7 +69,7 @@ export const UserForm = ({handleAddUsers}) => {
 
             <div className="mt-4">
                 <button type="submit" className="p-1 bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg">
-                    Enviar
+                    {formData.id > 0 ? 'Actualizar' : 'Enviar'}
                 </button>
             </div>
 
