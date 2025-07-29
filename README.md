@@ -1,2 +1,2 @@
-# admin-panel
-Panel de administración de usuarios
+# Admin Panel
+Panel de administración de usuarios creado con React + Tailwind CSS + Spring Boot con JWT + MariaDB
