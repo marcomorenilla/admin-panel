@@ -6,7 +6,7 @@ const emptyForm = {
     email: ''
 }
 
-export const UserForm = () => {
+export const UserForm = ({handleAddUsers}) => {
 
     const [formData, setFormData] = useState(emptyForm);
 
@@ -27,6 +27,7 @@ export const UserForm = () => {
         if(!username || !password || !email){
             alert('Debes rellenar todos los campos')
         }else{
+            handleAddUsers(formData);
             setFormData(emptyForm);
         }
         
