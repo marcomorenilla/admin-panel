@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { UserForm } from "./components/UserForm"
 import { UsersTable } from "./components/UsersTable"
+import { usersReducer } from "./reducers/usersReducer";
 
 
 export const AdminPanel = () => {
@@ -10,15 +11,13 @@ export const AdminPanel = () => {
         email:'prueba@correo.es'
     }]
 
-    const[users, setUsers] =  useState(userList);
+    const[users, dispatch] =  useReducer(usersReducer, userList);
 
     const handleAddUsers = (user) =>{
-        const id = users.reduce((accum)=>accum + 1,1)
-        user.id = id;
-        setUsers([
-            ...users,
-            user
-        ])
+        dispatch({
+            type: 'add',
+            user: user
+        })
     }
 
     return (<>
