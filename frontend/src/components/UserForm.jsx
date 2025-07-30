@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser }) => {
 
     const [formData, setFormData] = useState(emptyFormData);
+    console.log(formData)
 
     useEffect(() => {
         setFormData({ ...selectedUser })

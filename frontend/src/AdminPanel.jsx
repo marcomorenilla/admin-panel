@@ -1,53 +1,12 @@
-import { useReducer, useState } from "react";
 import { UserForm } from "./components/UserForm"
 import { UsersTable } from "./components/UsersTable"
-import { usersReducer } from "./reducers/usersReducer";
+import { useUsers } from "./hooks/useUsers";
 
-const userList = [{
-    id: 1,
-    username: 'prueba',
-    email: 'prueba@correo.es'
-}]
 
-const emptyForm = {
-    id: 0,
-    username: '',
-    password: '',
-    email: ''
-}
 
 export const AdminPanel = () => {
 
-
-    const [users, dispatch] = useReducer(usersReducer, userList);
-    const [selectedUser, setSelectedUser] = useState(emptyForm);
-
-    const handleAddUsers = (user) => {
-        let type;
-        console.log(`user - ${user}`)
-        if (user.id != 0) {
-            type = 'update'
-        } else {
-            type = 'add'
-        }
-
-        dispatch({
-            type,
-            user: user
-        })
-    }
-
-    const handleDeleteUsers = (id) => {
-        dispatch({
-            type: 'del',
-            id: id
-        })
-    }
-
-    const handleUpdateUsers = (user) => {
-        console.log(user)
-        setSelectedUser({ ...user });
-    }
+    const [users, selectedUser, emptyForm, handleAddUsers, handleDeleteUsers, handleUpdateUsers] = useUsers();
 
     return (<>
         <h1 className="w-100 py-16 mx-auto text-3xl font-bold">Panel de Administración</h1>
