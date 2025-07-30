@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 
-export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser }) => {
+export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser, handleDialog }) => {
 
-    const [formData, setFormData] = useState(emptyFormData);
-    console.log(formData)
+    const [formData, setFormData] = useState(emptyFormData);    
 
     useEffect(() => {
         setFormData({ ...selectedUser })
@@ -68,9 +67,13 @@ export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser }) => {
                     onChange={handleChange} />
             </div>
 
-            <div className="mt-4">
-                <button type="submit" className="p-1 bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg">
+            <div className="mt-10 text-center">
+                <button type="submit" className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg">
                     {formData.id > 0 ? 'Actualizar' : 'Enviar'}
+                </button>
+                <button type="button" className="ml-4 border font-bold border-blue-600 text-blue-600 p-2 bg-white rounded  hover:text-white hover:bg-blue-700 hover:shadow-lg"
+                onClick={()=> handleDialog(false)}>
+                    Cerrar
                 </button>
             </div>
 
