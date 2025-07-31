@@ -1,8 +1,7 @@
-import { useReducer, useState } from "react"
-import Swal from "sweetalert2"
-import { loginReducer } from "./reducers/loginReducer"
+import {  useState } from "react"
 
-export const LoginPage = ({ handleLogin }) => {
+
+export const LoginPage = ({ handleLogIn }) => {
 
     const initialFormData = {
         username: '',
@@ -13,7 +12,7 @@ export const LoginPage = ({ handleLogin }) => {
     const { username, password } = formData
 
     const onLogin = (formData) => {
-        handleLogin(formData)
+        handleLogIn(formData)
         setFormData(initialFormData)
     }
 

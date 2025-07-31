@@ -1,53 +1,29 @@
-import { useEffect, useReducer, useState } from "react"
-import { AdminPanel } from "./app/AdminPanel"
+
+import { Navigate, Route, Routes } from "react-router-dom"
+import { useAuth } from "./auth/hooks/useAuth"
 import { LoginPage } from "./auth/LoginPage"
-import Swal from "sweetalert2"
-import { loginReducer } from "./auth/reducers/loginReducer"
+import { AppRoutes } from "./routes/AppRoutes"
+import { useUsers } from "./app/hooks/useUsers"
+
 
 
 export const UsersApp = () => {
-    const initialUser = JSON.parse(sessionStorage.getItem('currentUser')) || {
-        isAuth: false,
-        user: undefined
-    }
-
-    const [currentUser, dispatch] = useReducer(loginReducer, initialUser)
-
-    useEffect(() => {
-        sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
-    }, [currentUser])
-
-    const handleLogin = ({ username, password }) => {
-        if (!username || !password) {
-            Swal.fire('Error', 'Username y password no pueden estar vacíos', 'error')
-        } else {
-            if (username == 'admin' && password == '1234') {
-                dispatch({
-                    type: 'login',
-                    user: {
-                        username,
-                        password
-                    }
-                })
-            } else {
-                Swal.fire('Error', 'Nombre de usuario o contraseña no encontrados', 'error')
-            }
-        }
-    }
-
-    const handleLogOut = () => {
-        dispatch({
-            type:'logout'
-        })
-        sessionStorage.removeItem('currentUser')
-    }
-    return (<>
+    const [currentUser, handleLogIn, handleLogOut] = useAuth()
+    const [users, selectedUser, emptyForm, isDialogOpen, handleAddUsers, handleUpdateUsers, handleDeleteUsers, handleDialog] = useUsers();
+    console.log(currentUser.isAuth)
+    return (<Routes>
         {
+            
             !currentUser.isAuth ?
-                <LoginPage handleLogin={handleLogin} /> :
-                <AdminPanel currentUser={currentUser.user} handleLogOut={handleLogOut} />
+                <>
+                    <Route path="/login" element={<LoginPage handleLogIn={handleLogIn} />} />
+                    <Route path="/*" element={<Navigate to="/login" />} />
+                </>
+                :
+                <Route path="/*" element={<AppRoutes handleAddUsers={handleAddUsers} emptyFormData={emptyForm} selectedUser={selectedUser} currentUser={currentUser} handleLogOut={handleLogOut} />} />
+
         }
 
 
-    </>)
+    </Routes>)
 }

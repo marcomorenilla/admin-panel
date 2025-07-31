@@ -10,7 +10,7 @@ export const AdminPanel = ({currentUser, handleLogOut}) => {
     const [users, selectedUser, emptyForm, isDialogOpen, handleAddUsers, handleUpdateUsers, handleDeleteUsers, handleDialog] = useUsers();
     
     return (<>
-        <NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
+        
         
         <div className="w-full mx-auto p-3 mt-40">
             <UserFormDialog handleAddUsers={handleAddUsers} emptyForm={emptyForm} selectedUser={selectedUser} isDialogOpen={isDialogOpen} handleDialog={handleDialog} />
