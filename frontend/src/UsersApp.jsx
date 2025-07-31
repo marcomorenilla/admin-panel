@@ -8,13 +8,13 @@ import { loginReducer } from "./auth/reducers/loginReducer"
 export const UsersApp = () => {
     const initialUser = JSON.parse(sessionStorage.getItem('currentUser')) || {
         isAuth: false,
-        user: 'pepe'
+        user: undefined
     }
 
     const [currentUser, dispatch] = useReducer(loginReducer, initialUser)
 
-    useEffect(()=>{
-        sessionStorage.setItem('currentUser',JSON.stringify(currentUser))
+    useEffect(() => {
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
     }, [currentUser])
 
     const handleLogin = ({ username, password }) => {
@@ -25,8 +25,8 @@ export const UsersApp = () => {
                 dispatch({
                     type: 'login',
                     user: {
-                            username,
-                            password
+                        username,
+                        password
                     }
                 })
             } else {
@@ -34,11 +34,18 @@ export const UsersApp = () => {
             }
         }
     }
+
+    const handleLogOut = () => {
+        dispatch({
+            type:'logout'
+        })
+        sessionStorage.removeItem('currentUser')
+    }
     return (<>
         {
             !currentUser.isAuth ?
                 <LoginPage handleLogin={handleLogin} /> :
-                <AdminPanel currentUser={currentUser.user}/>
+                <AdminPanel currentUser={currentUser.user} handleLogOut={handleLogOut} />
         }
 
 
