@@ -20,7 +20,7 @@ export const UserFormDialog = ({ handleAddUsers, emptyForm, selectedUser, isDial
                 className="mx-auto mt-20 p-4 rounded shadow-xl"
             >
                 <div className="w-full mt-8 mx-auto text-center">
-                    <div className="text-2xl font-bold">Formulario usuarios:</div>
+                    <div className="text-2xl font-bold">Formulario de usuarios:</div>
                 </div>
                 <UserForm handleAddUsers={handleAddUsers} emptyFormData={emptyForm} selectedUser={selectedUser} handleDialog={handleDialog} />
             </dialog>

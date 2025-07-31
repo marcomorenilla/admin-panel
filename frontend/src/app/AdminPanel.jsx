@@ -1,19 +1,18 @@
+import { NavBar } from "./components/NavBar";
 import { UserFormDialog } from "./components/UserFormDialog";
 import { UsersTable } from "./components/UsersTable"
 import { useUsers } from "./hooks/useUsers";
 
 
 
-export const AdminPanel = () => {
-
+export const AdminPanel = ({currentUser}) => {
+    console.log(currentUser)
     const [users, selectedUser, emptyForm, isDialogOpen, handleAddUsers, handleUpdateUsers, handleDeleteUsers, handleDialog] = useUsers();
     
     return (<>
-        <div className="w-full mx-auto text-center">
-            <h1 className="py-8 mt-12 mx-auto text-3xl font-bold">Panel de Administración</h1>
-        </div>
-
-        <div className="w-full mx-auto p-3">
+        <NavBar currentUser={currentUser}/>
+        
+        <div className="w-full mx-auto p-3 mt-40">
             <UserFormDialog handleAddUsers={handleAddUsers} emptyForm={emptyForm} selectedUser={selectedUser} isDialogOpen={isDialogOpen} handleDialog={handleDialog} />
             <div className="mt-1 w-100 mx-auto text-center">
                 <button type="button" className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg"
