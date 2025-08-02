@@ -1,19 +1,18 @@
-import { NavBar } from "./components/NavBar";
 import { UserFormDialog } from "./components/UserFormDialog";
 import { UsersTable } from "./components/UsersTable"
-import { useUsers } from "./hooks/useUsers";
 
 
 
-export const AdminPanel = ({currentUser, handleLogOut}) => {
+
+export const AdminPanel = ({users, selectedUser, emptyFormData, isDialogOpen, handleAddUsers, handleUpdateUsers, handleDeleteUsers, handleDialog}) => {
     
-    const [users, selectedUser, emptyForm, isDialogOpen, handleAddUsers, handleUpdateUsers, handleDeleteUsers, handleDialog] = useUsers();
+    
     
     return (<>
         
         
         <div className="w-full mx-auto p-3 mt-40">
-            <UserFormDialog handleAddUsers={handleAddUsers} emptyForm={emptyForm} selectedUser={selectedUser} isDialogOpen={isDialogOpen} handleDialog={handleDialog} />
+            <UserFormDialog handleAddUsers={handleAddUsers} emptyFormData={emptyFormData} selectedUser={selectedUser} isDialogOpen={isDialogOpen} handleDialog={handleDialog} />
             <div className="mt-1 w-100 mx-auto text-center">
                 <button type="button" className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg"
                     onClick={() => handleDialog(true)}>

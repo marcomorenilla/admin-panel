@@ -14,6 +14,7 @@ export const useAuth = () => {
 
     useEffect(() => {
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
+        console.log(`current user useAuth - ${JSON.stringify(currentUser)}`)
     }, [currentUser])
 
     const handleLogIn = ({ username, password }) => {

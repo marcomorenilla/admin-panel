@@ -22,6 +22,7 @@ export const useUsers = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleAddUsers = (user) => {
+        console.log(`user to be added - ${JSON.stringify(user)}`)
         dispatch({
             type: user.id != 0 ? 'update' : 'add',
             user: user
