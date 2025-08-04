@@ -1,13 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { UserForm } from "./components/UserForm"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 
-export const UserFormRoute = ({ handleAddUsers, emptyFormData, handleUpdateUsers  }) => {
+export const UserFormRoute = ({ handleAddUsers, emptyFormData, users  }) => {
     const [userSelected, setUserSelected] = useState(emptyFormData)
     const navigate = useNavigate()
 
+    const {id} = useParams()
 
+    useEffect(()=>{
+        //const userFinded = (users.find(user => user.id == id) || emptyFormData)
+        //setUserSelected(userFinded)
+        console.log(id)
+    },[id])
 
     const onUserAdded = (user) =>{
         handleAddUsers(user);
@@ -16,7 +22,7 @@ export const UserFormRoute = ({ handleAddUsers, emptyFormData, handleUpdateUsers
     return (
         <div className="mt-16">
             <div className="text-3xl">Ruta registro</div>
-            <UserForm handleAddUsers={onUserAdded} emptyFormData={emptyFormData} selectedUser={userSelected} handleUpdateUsers={handleUpdateUsers}/>
+            <UserForm handleAddUsers={onUserAdded} emptyFormData={emptyFormData} selectedUser={userSelected}/>
         </div>
     )
 }

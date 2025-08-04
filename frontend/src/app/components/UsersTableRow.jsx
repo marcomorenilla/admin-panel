@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 
 
 export const UsersTableRow = ({ id, username, email, handleDeleteUsers, handleUpdateUsers }) => {
@@ -20,16 +21,11 @@ export const UsersTableRow = ({ id, username, email, handleDeleteUsers, handleUp
                     </button>
                 </td>
                 <td className="border-r border-gray-200 py-1 px-6">
-                    <button className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg"
-                        onClick={() => handleUpdateUsers(
-                            {
-                                id,
-                                username,
-                                email,
-                            }
-                        )}>
-                        Actualizar ruta
-                    </button>
+                    <NavLink className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg"
+                    to={"/users/updade/"+id}>
+                        {console.log(`actualizando - ${id}`)}
+                        Ruta actualizar
+                    </NavLink>
                 </td>
                 <td className="py-2 px-6">
                     <button className="p-2 font-bold bg-red-600 rounded text-white hover:bg-red-700 hover:shadow-lg"

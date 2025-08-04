@@ -8,7 +8,8 @@ export const AppRoutes = ({ currentUser, handleLogOut, users, selectedUser, empt
         <NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
         <Routes>
             <Route path="/*" element={<Navigate to="/users"/>}/>
-            <Route path="users" element={<AdminPanel users={users}
+            <Route path="/users" element={<AdminPanel 
+            users={users}
             selectedUser={selectedUser}
             emptyFormData={emptyFormData}
             isDialogOpen={isDialogOpen}
@@ -17,8 +18,8 @@ export const AppRoutes = ({ currentUser, handleLogOut, users, selectedUser, empt
             handleDeleteUsers={handleDeleteUsers}
             handleDialog={handleDialog}
             />}/>
-            <Route path="users/register" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData}/>}/>
-            <Route path="users/update" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData} handleUpdateUsers={handleUpdateUsers} />}/>
+            <Route path="/users/register" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData}/>}/>
+            <Route path="/users/update/:id" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData} users={users} />}/>
         </Routes>
         </>
     )
