@@ -19,7 +19,10 @@ export const UsersApp = () => {
                     <Route path="/*" element={<Navigate to="/login" />} />
                 </>
                 :
-                <Route path="/*" element={<AppRoutes users={users} isDialogOpen={isDialogOpen} handleUpdateUsers={handleUpdateUsers}
+                <Route path="/*" element={<AppRoutes 
+                    users={users} 
+                    isDialogOpen={isDialogOpen} 
+                    handleUpdateUsers={handleUpdateUsers}
                     handleDeleteUsers={handleDeleteUsers}
                     handleDialog={handleDialog}
                     handleAddUsers={handleAddUsers}

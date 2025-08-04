@@ -12,6 +12,7 @@ export const UsersTable = ({ users = [], handleDeleteUsers, handleUpdateUsers })
                         <th className="border-r border-white-200 py-1 px-6 font-bold uppercase">username</th>
                         <th className="border-r border-white-200 py-1 px-6 font-bold uppercase">email</th>
                         <th className="border-r border-white-200 py-1 px-6 font-bold uppercase">actualizar</th>
+                        <th className="border-r border-white-200 py-1 px-6 font-bold uppercase">ruta actualizar</th>
                         <th className="py-1 px-6  font-bold uppercase">eliminar</th>
                     </tr>
                 </thead>

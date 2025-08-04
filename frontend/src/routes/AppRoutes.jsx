@@ -18,6 +18,7 @@ export const AppRoutes = ({ currentUser, handleLogOut, users, selectedUser, empt
             handleDialog={handleDialog}
             />}/>
             <Route path="users/register" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData}/>}/>
+            <Route path="users/update" element={<UserFormRoute  handleAddUsers={handleAddUsers} emptyFormData={emptyFormData} handleUpdateUsers={handleUpdateUsers} />}/>
         </Routes>
         </>
     )
