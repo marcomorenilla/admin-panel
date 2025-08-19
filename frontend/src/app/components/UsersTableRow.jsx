@@ -22,8 +22,7 @@ export const UsersTableRow = ({ id, username, email, handleDeleteUsers, handleUp
                 </td>
                 <td className="border-r border-gray-200 py-1 px-6">
                     <NavLink className="p-2 font-bold bg-blue-600 rounded text-white hover:bg-blue-700 hover:shadow-lg"
-                    to={"/users/updade/"+id}>
-                        {console.log(`actualizando - ${id}`)}
+                    to={"/users/update/"+id}>
                         Ruta actualizar
                     </NavLink>
                 </td>

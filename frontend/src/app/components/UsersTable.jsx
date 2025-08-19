@@ -5,7 +5,7 @@ export const UsersTable = ({ users = [], handleDeleteUsers, handleUpdateUsers })
         <>
             
 
-            <table className="h-12 w-full shadow-md rounded-lg mx-auto mt-3 overflow-hidden text-center">
+            <table className="h-12 w-auto shadow-md rounded-lg mx-auto mt-3 overflow-hidden text-center">
                 <thead className="bg-green-700 text-white">
                     <tr>
                         <th className="border-r border-white-200 py-1 px-6 font-bold uppercase">#</th>

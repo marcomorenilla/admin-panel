@@ -11,6 +11,7 @@ export const NavBar = ({ currentUser, handleLogOut }) => {
                         <li>
                             <NavLink className="hover:text-blue-500 aria-[current=page]:text-blue-400"
                                 to="/users"
+                                end
                             >Users</NavLink>
                         </li>
                          <li>

@@ -3,16 +3,16 @@ import { UserForm } from "./components/UserForm"
 import { useNavigate, useParams } from "react-router-dom"
 
 
-export const UserFormRoute = ({ handleAddUsers, emptyFormData, users  }) => {
+export const UserFormRoute = ({ handleAddUsers, emptyFormData, users =[] }) => {
     const [userSelected, setUserSelected] = useState(emptyFormData)
     const navigate = useNavigate()
 
     const {id} = useParams()
 
     useEffect(()=>{
-        //const userFinded = (users.find(user => user.id == id) || emptyFormData)
-        //setUserSelected(userFinded)
-        console.log(id)
+        console.log(`parámetro id - ${id}`)
+        const userFinded = users.find(user => user.id == id) || emptyFormData
+        setUserSelected(userFinded)
     },[id])
 
     const onUserAdded = (user) =>{

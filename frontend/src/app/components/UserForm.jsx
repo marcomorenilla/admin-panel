@@ -52,7 +52,6 @@ export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser, handleDi
                         value={password}
                         onChange={handleChange} />
                 </>
-
                 }
 
             </div>
