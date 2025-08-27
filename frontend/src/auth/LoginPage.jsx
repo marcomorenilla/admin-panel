@@ -1,7 +1,10 @@
-import {  useState } from "react"
+import {  useContext, useState } from "react"
+import { AuthContext } from "./context/AuthContext"
 
 
-export const LoginPage = ({ handleLogIn }) => {
+export const LoginPage = () => {
+
+    const {handleLogIn} = useContext(AuthContext);
 
     const initialFormData = {
         username: '',

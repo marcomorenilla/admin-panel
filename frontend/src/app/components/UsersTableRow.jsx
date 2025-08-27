@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom"
+import { UserContext } from "../context/UserContext"
+import { useContext } from "react"
 
 
-export const UsersTableRow = ({ id, username, email, handleDeleteUsers, handleUpdateUsers }) => {
+export const UsersTableRow = ({ id, username, email}) => {
+    const { handleDeleteUsers, handleUpdateUsers } = useContext(UserContext)
     return (
         <>
             <tr className="border-b border-gray-200 hover:bg-gray-100">

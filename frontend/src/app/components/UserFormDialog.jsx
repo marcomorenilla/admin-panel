@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { UserForm } from "./UserForm"
+import { UserContext } from "../context/UserContext";
 
-export const UserFormDialog = ({ handleAddUsers, emptyFormData, selectedUser, isDialogOpen, handleDialog }) => {
+export const UserFormDialog = ({handleDialog}) => {
+    const { selectedUser, emptyForm, isDialogOpen, handleAddUsers } = useContext(UserContext);
     const dialogRef = useRef(null);
     useEffect(() => {
         if (dialogRef.current) {
@@ -22,7 +24,7 @@ export const UserFormDialog = ({ handleAddUsers, emptyFormData, selectedUser, is
                 <div className="w-full mt-8 mx-auto text-center">
                     <div className="text-2xl font-bold">Formulario de usuarios:</div>
                 </div>
-                <UserForm handleAddUsers={handleAddUsers} emptyFormData={emptyFormData} selectedUser={selectedUser} handleDialog={handleDialog} />
+                <UserForm handleAddUsers={handleAddUsers} emptyFormData={emptyForm} selectedUser={selectedUser} handleDialog={handleDialog} />
             </dialog>
 
 

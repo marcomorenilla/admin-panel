@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 
-export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser, handleDialog }) => {
+export const UserForm = ({  selectedUser, handleDialog }) => {
 
-    const [formData, setFormData] = useState(emptyFormData);
+    const {emptyForm, handleAddUsers} = useContext(UserContext)
+
+    const [formData, setFormData] = useState(emptyForm);
 
     useEffect(() => {
         setFormData({ ...selectedUser })
@@ -25,7 +28,7 @@ export const UserForm = ({ emptyFormData, handleAddUsers, selectedUser, handleDi
             alert('Debes rellenar todos los campos')
         } else {
             handleAddUsers(formData);
-            setFormData(emptyFormData);
+            setFormData(emptyForm);
         }
 
     }

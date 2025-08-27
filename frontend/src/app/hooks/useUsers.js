@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import { usersReducer } from "../reducers/usersReducer";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const userList = [{
     id: 1,
@@ -20,6 +21,7 @@ export const useUsers = () => {
     const [users, dispatch] = useReducer(usersReducer, userList);
     const [selectedUser, setSelectedUser] = useState(emptyForm);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleAddUsers = (user) => {
         console.log(`user to be added - ${JSON.stringify(user)}`)
@@ -33,7 +35,7 @@ export const useUsers = () => {
             text: user.id != 0 ? 'Usuario actualizado!' : 'Usuario creado',
             icon: "success"
         });
-
+        navigate('/users')
 
     }
 
